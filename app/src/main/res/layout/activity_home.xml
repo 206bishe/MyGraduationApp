@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include layout="@layout/top"/>
+    <!--<include layout="@layout/top"/>-->
     <fragment
         android:id="@+id/id_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:name="MvpView.graduationproject.HomeFragment"
+        >
     </fragment>
     <include layout="@layout/bottom" />
 

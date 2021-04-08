@@ -5,9 +5,10 @@ public class HomeContent {
     private String mContent;
     private int mImgID;
 
-    HomeContent(String title, String content){
+    public HomeContent(String title, String content, int imgID){
         this.mContent = content;
         this.mTitle = title;
+        this.mImgID = imgID;
     }
     public String getmTitle() {
         return mTitle;

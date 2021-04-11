@@ -14,7 +14,7 @@ public class WebUtilTest {
     public WebUtilTest() {
     }
 
-    private HttpURLConnection getConnection() {
+    public HttpURLConnection getConnection() {
         try{
             url = new URL("121.4.187.26");
             connection = (HttpURLConnection) url.openConnection();
@@ -25,7 +25,7 @@ public class WebUtilTest {
         return connection;
     }
 
-    private void initConnection(HttpURLConnection connection) throws ProtocolException {
+    public void initConnection(HttpURLConnection connection) throws ProtocolException {
         connection.setRequestMethod("GET");
         connection.setConnectTimeout(8000);
         connection.setReadTimeout(8000);

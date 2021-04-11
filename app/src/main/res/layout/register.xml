@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="User:"
+            android:gravity="right"/>
+
+        <EditText
+            android:id="@+id/L_user"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your username"/>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="Password:"
+            android:gravity="right"/>
+
+        <EditText
+            android:id="@+id/L_password"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your password"/>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="EnsurePw:"
+            android:gravity="right"/>
+
+        <EditText
+            android:id="@+id/L_password1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Ensure your password"/>
+    </TableRow>
+
+
+
+    <TableRow android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/un"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="University:"
+            android:gravity="right"
+            />
+
+        <EditText
+            android:id="@+id/spinner"
+            android:layout_width="12dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:autofillHints="Input your University"
+            android:inputType="text" />
+
+    </TableRow>
+
+    <LinearLayout android:layout_marginTop="12dp">
+        <Button
+            android:id="@+id/L_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:layout_weight="1"
+            android:background="#00CED1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Register" />
+
+    </LinearLayout>
+
+</TableLayout>

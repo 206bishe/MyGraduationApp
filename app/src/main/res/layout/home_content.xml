@@ -21,12 +21,15 @@
             android:textSize="30sp"
             android:text="第十届蓝桥杯大赛"/>
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/content_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="   蓝桥杯大赛是蓝桥杯大赛是蓝桥杯大赛是蓝桥杯大赛是蓝桥杯大赛是蓝桥杯大赛是蓝桥杯大赛是蓝桥杯大赛是"/>
+    </LinearLayout>
 </LinearLayout>
 

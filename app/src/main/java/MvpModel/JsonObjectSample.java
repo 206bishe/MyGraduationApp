@@ -1,5 +1,7 @@
 package MvpModel;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JsonObjectSample {
-
+    private static final String TAG = "JsonObjectSample";
     public static JSONObject createJson(String username, String password){
         JSONObject mJsonObject = new JSONObject();
         try{
@@ -38,6 +40,7 @@ public class JsonObjectSample {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        Log.d(TAG, "after convert:  " + String.valueOf(jsonObject));
         return String.valueOf(jsonObject);
     }
 

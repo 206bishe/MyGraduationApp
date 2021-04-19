@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,7 +30,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     //声明三个布局
     private LinearLayout mLinearHome;
-    private LinearLayout mLinearPublish;
     private LinearLayout mLinearMine;
     //声明三个图形按钮
     private ImageButton mImgHome;
@@ -39,7 +39,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Fragment mTabHome = new HomeFragment();
     private Fragment mTabPublish = new PublishFragment();
     private Fragment mTabMine = new MineFragment();
-
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +61,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.id_tab_Home:
                 setSelect(0);
                 break;
-            case R.id.id_tab_Publish:
-                setSelect(1);
-                break;
             case R.id.id_tab_Mine:
                 setSelect(2);
                 break;
@@ -72,12 +69,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     //初始化所有控件实例
     private void initView(){
         mLinearHome = (LinearLayout)findViewById(R.id.id_tab_Home);
-        mLinearPublish = (LinearLayout)findViewById(R.id.id_tab_Publish);
         mLinearMine = (LinearLayout)findViewById(R.id.id_tab_Mine);
 
         mImgHome = (ImageButton)findViewById(R.id.img_Home);
-        mImgPublish = (ImageButton)findViewById(R.id.img_Publish);
         mImgMine = (ImageButton)findViewById(R.id.img_Mine);
+        mContext = getApplicationContext();
         Log.d(TAG, "initView successed!");
     }
     private void init(){
@@ -90,7 +86,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     //注册三个监听事件
     private void regEvent(){
         mLinearHome.setOnClickListener(this);
-        mLinearPublish.setOnClickListener(this);
         mLinearMine.setOnClickListener(this);
         Log.d(TAG, "regEvent successed!");
     }

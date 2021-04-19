@@ -17,9 +17,7 @@ public class Webutils  {
     public static OkHttpClient client = new OkHttpClient();
     static MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     Webutils(){
-
     }
-
     public static String postRequest(String json, String url) throws IOException {
         String respondata = null;
         RequestBody requestBody = RequestBody.create(JSON,json);

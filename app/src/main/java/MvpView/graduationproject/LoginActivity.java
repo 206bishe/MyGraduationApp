@@ -3,6 +3,7 @@ package MvpView.graduationproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,16 +32,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private SharedPreferences pref;
     private CheckBox rememberPass;
     private static final String TAG = "LoginActivity";
-    private static final String URL_LOGIN = "login/json";
+    private static final String URL_LOGIN = "https://121.4.187.26:8080/user/login";
     private LoginHandler loginHandler;
+    private SharedPreferences.Editor editor;
+    Context mContext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
         //绑定控件
         init();
         //记住密码
+        pref = getSharedPreferences("data",Context.MODE_PRIVATE);
         boolean isRemember = pref.getBoolean("remember_password", false);
         if (isRemember) {
             String user1 = pref.getString("user", "");
@@ -72,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         rememberPass = findViewById(R.id.remember);
         login.setOnClickListener(this);
         register.setOnClickListener(this);
+        mContext = getApplicationContext();
     }
 
     private void doLogin() {
@@ -87,6 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             loginHandler = new LoginHandler(Looper.myLooper());
             OparateData oparateData = new OparateData();
             oparateData.verifyLogin(data,loginHandler,URL_LOGIN);
+            Log.d(TAG, "done verifyLogin");
         }
     }
     private final class LoginHandler extends Handler{
@@ -104,6 +109,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 case 1:
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                     StateManager.isLogin =true;
+                    editor = pref.edit();
+                    if(rememberPass.isChecked()){
+                        editor.putBoolean("remember_password",true);
+                        editor.putString("account",username.getText().toString());
+                        editor.putString("password",password.getText().toString());
+                    }else{
+                        editor.clear();
+                    }
+                    editor.apply();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     LoginActivity.this.finish();
                     break;

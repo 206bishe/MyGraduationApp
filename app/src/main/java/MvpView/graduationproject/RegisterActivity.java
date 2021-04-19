@@ -42,12 +42,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private ArrayAdapter<String> adapter;
     private RegisterHandler handler;
     private static final String TAG = "RegisterActivity";
-    private static final String URL_REGISTER = "register/json";
+    private static final String URL_REGISTER = "https://121.4.187.26:8080/user/register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
+        init();
     }
     private void init(){
         loginRegister = findViewById(R.id.L_register);
@@ -88,6 +89,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(RegisterActivity.this, "请输入就读大学", Toast.LENGTH_SHORT).show();
         }else {
             str= new String[]{user, password1,phone,universityName};
+            Log.d(TAG, "doRegister: user: " + str[0] + "/pass: " + str[1] + "/phone :" + str[2] +"/university :"+ str[3]);
         }
         RegisterHandler rh = new RegisterHandler(Looper.myLooper());
         OparateData oparateData = new OparateData();

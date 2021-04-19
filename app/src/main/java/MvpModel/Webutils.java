@@ -21,15 +21,27 @@ public class Webutils  {
     }
 
     public static String postRequest(String json, String url) throws IOException {
-        String respondate = null;
+        String respondata = null;
         RequestBody requestBody = RequestBody.create(JSON,json);
         Request request = new Request.Builder()
                 .url(url)
                 .post(requestBody)
                 .build();
         Response response = client.newCall(request).execute();
-        respondate = response.body().string();
-        return respondate;
+        respondata = response.body().string();
+        return respondata;
+    }
+
+    public static String postReqForRegister(String json, String url) throws IOException{
+        String respondata = null;
+        RequestBody requestBody = RequestBody.create(JSON,json);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        Response response = client.newCall(request).execute();
+        respondata = response.body().string();
+        return respondata;
     }
 
     public static String getRequest(String json, String url) throws IOException{

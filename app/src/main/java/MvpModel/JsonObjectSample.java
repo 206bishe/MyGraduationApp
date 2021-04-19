@@ -29,7 +29,7 @@ public class JsonObjectSample {
     public static String stringTojson(String[] stringArray){
         JSONObject jsonObject = null;
         if(stringArray == null) {
-            return "";
+            return null;
         }
         jsonObject = new JSONObject();
         try {
@@ -38,9 +38,27 @@ public class JsonObjectSample {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String jsonString = String.valueOf(jsonObject);
-        return jsonString;
+        return String.valueOf(jsonObject);
     }
+
+    public static String regStringToJson(String[] stringArray){
+        JSONObject jsonObject = null;
+        if(stringArray == null) {
+            return null;
+        }
+        jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username",stringArray[0]);
+            jsonObject.put("password",stringArray[1]);
+            jsonObject.put("phone",stringArray[2]);
+            jsonObject.put("university",stringArray[3]);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return String.valueOf(jsonObject);
+    }
+
+
 
 
 

@@ -23,12 +23,11 @@ import com.example.graduationproject.R;
 import MvpModel.HomeContent;
 import MvpModel.Webutils;
 import MvpPresenter.OparateData;
+import MvpPresenter.StateManager;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText username;
     private EditText password;
-    private Button login;
-    private Button register;
     private SharedPreferences pref;
     private CheckBox rememberPass;
     private static final String TAG = "LoginActivity";
@@ -57,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.register:
+                startActivity(new Intent(this,RegisterActivity.class));
                 break;
             case R.id.login:
                 doLogin();
@@ -65,11 +65,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void init() {
-        login = findViewById(R.id.login);
-        register = findViewById(R.id.register);
+        Button login = findViewById(R.id.login);
+        Button register = findViewById(R.id.register);
         username = findViewById(R.id.user);
         password = findViewById(R.id.password);
         rememberPass = findViewById(R.id.remember);
+        login.setOnClickListener(this);
+        register.setOnClickListener(this);
     }
 
     private void doLogin() {
@@ -101,6 +103,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     break;
                 case 1:
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                    StateManager.isLogin =true;
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     LoginActivity.this.finish();
                     break;

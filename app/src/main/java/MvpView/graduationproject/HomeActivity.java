@@ -20,6 +20,7 @@ import com.example.graduationproject.R;
 import java.nio.file.ClosedFileSystemException;
 
 import MvpPresenter.MainService;
+import MvpPresenter.StateManager;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "HomeActivity";
@@ -48,6 +49,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "onCreate!");
         init();
         setSelect(0);
+        if (!StateManager.isLogin){
+            startActivity(new Intent(HomeActivity.this,LoginActivity.class));
+        }
     }
 
     @Override
